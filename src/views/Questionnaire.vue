@@ -1,8 +1,10 @@
 <template>
   <div id="questionnaire">
-    <h3>Mr {{prenom}} {{nom}}, société {{nomSociete}}</h3>
+    <h3>Bienvenue {{prenom}} {{nom}} de la société {{nomSociete}}</h3>
     <div id="question-component">
+      
       <question :question="questions[counter]" @choice="choice = $event"></question>
+      <span v-if="error" class="error">Veuillez sélectionner une réponse !</span>
       <b-button v-if="canNextQuestion" block variant="primary" class="connectButton" @click="nextQuestion"><b>Question
         suivante</b>
       </b-button>
@@ -13,10 +15,11 @@
 </template>
 
 <script>
+  import css from "../assets/css/questionnaire.css"
   import questionsJSON from '../assets/questions.json'
   import Question from "../components/Question";
-
   export default {
+    css,
     name: "Questionnaire",
     components: {
       Question
@@ -30,7 +33,10 @@
         counter: 0,
         canNextQuestion: true,
         choice: "",
-        first: true
+        results: [],
+        first: true,
+        score: 0,
+        error: false
       }
     },
     created() {
@@ -38,50 +44,56 @@
     },
     methods: {
       nextQuestion() {
-        if (this.first) {
-          this.first = false
+        if (this.choice !== "" || this.first) {
+          this.error = false
+          if (this.first) {
+            this.first = false
+          } else {
+            let res = {
+              'question': this.questions[this.counter],
+              'choice': this.choice
+            }
+            this.results.push(res)
+            this.isGoodAnswer()
+            this.counter++
+          }
+          if (!this.questions[this.counter + 1]) {
+            this.canNextQuestion = false
+          }
+          this.choice = ""
         } else {
-          this.counter++
-        }
-        if (!this.questions[this.counter + 1]) {
-          this.canNextQuestion = false
+          this.error = true
         }
       },
       testFinish() {
-
+        if (this.choice !== "") {
+          this.error = false
+          let res = {
+            'question': this.questions[this.counter],
+            'choice': this.choice
+          }
+          this.results.push(res)
+          this.isGoodAnswer()
+          this.$router.push({
+            path: 'resultats',
+            query: {
+              results: this.results,
+              nom: this.nom,
+              prenom: this.prenom,
+              societe: this.nomSociete,
+              score: this.score
+            }
+          })
+        } else {
+          this.error = true
+        }
+      },
+      isGoodAnswer() {
+        if (this.questions[this.counter].bonneReponse === this.choice) {
+          this.score++
+        }
       }
     }
   }
 </script>
 
-<style scoped>
-  #questionnaire {
-    height: 100%;
-    display: grid;
-    grid-template-columns: 15% 35% 35% 15%;
-    grid-template-rows: 15% 35% 35% 15%;
-    background-color: rgb(255, 255, 255);
-  }
-
-  h3 {
-  
-    grid-row: 1/2;
-    grid-column: 1/4;
-    font-family: sans-serif;
-    font-size: 20px;
-    text-align: right
-  }
-
-  #question-component {
-    background-color: white;
-    border-radius: 20px;
-    grid-row: 2/4;
-    grid-column: 2/4;
-  }
-
-  .connectButton {
-    height: 10%;
-    border-radius:30px;
-    background-color: coral
-  }
-</style>

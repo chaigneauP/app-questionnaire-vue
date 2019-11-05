@@ -12,7 +12,9 @@
 </template>
 
 <script>
+  import css from "../assets/css/question.css"
   export default {
+    css,
     name: "Question",
     props: {
       question: Object
@@ -29,23 +31,3 @@
     }
   }
 </script>
-
-<style scoped>
-  #question {
-    height: 80%;
-    display: grid;
-    grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr 0.8fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-  }
-
-  #span-question {
-    grid-column: 2/6;
-    grid-row: 2/3;
-    font-size: 20px;
-  }
-
-  #input-response {
-    grid-column: 2/6;
-    grid-row: 3/5;
-  }
-</style>

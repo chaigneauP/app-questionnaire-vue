@@ -1,0 +1,39 @@
+
+#home {
+    height: 100%;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 20% 30% 30% 20%;
+    grid-template-rows: 25% 25% 25% 25%;
+
+}
+
+#connection {
+    grid-column: 2/4;
+    grid-row: 2/4;
+    
+}
+
+.connectButton {
+    margin-top: 4%;
+    font-size: 10px;
+}
+
+
+
+
+.errorMessage {
+    font-weight: bold;
+    color: red;
+    font-size: 10px;
+}
+
+.b-input-group:invalid {
+    background-color: #ff0000;
+}
+#connection-block h1{
+    text-align: center;
+    font-size: 8vw;
+}
+
+

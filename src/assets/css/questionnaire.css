@@ -1,0 +1,35 @@
+#questionnaire {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 15% 35% 35% 15%;
+    grid-template-rows: 15% 35% 35% 15%;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+}
+#questionnaire h3{
+    font-size: 3vw;
+    text-align: center;
+    
+    
+}
+
+
+#question-component {
+    background-color: white;
+    border-radius: 20px;
+    grid-row: 2/4;
+    grid-column: 2/4;
+}
+
+.connectButton {
+    height: 10%;
+    border-radius: 30px;
+    background-color: coral
+}
+
+.error {
+    text-align: center;
+    font-weight: bold;
+    color: red;
+    
+}

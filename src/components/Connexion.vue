@@ -17,7 +17,9 @@
 </template>
 
 <script>
+  import css from "../assets/css/connexion.css"
   export default {
+    css,
     name: "Connexion",
     data() {
       return {
@@ -46,18 +48,3 @@
     }
   }
 </script>
-
-<style scoped>
-  .connectButton {
-    margin-top: 4%;
-  }
-
-  .errorMessage {
-    font-weight: bold;
-    color: red;
-    font-size: 18px;
-  }
-  .b-input-group:invalid{
-    background-color: #ff0000;
-  }
-</style>
