@@ -1,18 +1,42 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="home">
+    <div id="connection">
+      <connexion></connexion>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+  import Connexion from "../components/Connexion";
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  export default {
+    name: 'Home',
+    components: {
+      Connexion
+    }
   }
-}
 </script>
+
+<style scoped>
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    background-color: lightblue;
+  }
+
+  #home {
+    height: 100%;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 25% 25% 25% 25%;
+  }
+
+  #connection {
+    grid-column: 2/4;
+    grid-row: 2/4;
+  }
+</style>

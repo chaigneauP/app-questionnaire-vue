@@ -1,0 +1,52 @@
+{
+  "questions": [
+    {
+      "question": "Question 1 ?",
+      "type": "radio",
+      "choix": [
+        "choix 1",
+        "choix 2",
+        "choix 3"
+      ]
+    },
+    {
+      "question": "Question 2 ?",
+      "type": "radio",
+      "choix": [
+        "choix 2.1",
+        "choix 2.2",
+        "choix 2.3"
+      ]
+    },
+    {
+      "question": "Question 3 ?",
+      "type": "radio",
+      "choix": [
+        "choix 3.1",
+        "choix 3.2",
+        "choix 3.3",
+        "choix 3.4"
+      ]
+    },
+    {
+      "question": "Question 4 ?",
+      "type": "radio",
+      "choix": [
+        "choix 1",
+        "choix 2",
+        "choix 3",
+        "choix 4"
+      ]
+    },
+    {
+      "question": "Question 5 ?",
+      "type": "radio",
+      "choix": [
+        "choix 1",
+        "choix 2",
+        "choix 3",
+        "choix 4"
+      ]
+    }
+  ]
+}
